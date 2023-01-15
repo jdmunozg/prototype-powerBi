@@ -1,1 +1,17 @@
-<div style=" width: 100%;" [ngStyle]="{ 'height': (screenHeight-150)+ 'px' }" #reportContainer id="reportContainer"></div>  
+<div *ngIf="status == true" class="loader">
+    <img
+      src="../../assets/images/loadeer.gif"
+      style="width: 50px; height: 50px"
+    />
+  </div>
+
+<div *ngIf="status == false">
+    <div class="buttons-dashboards">
+        <div *ngFor="let items of credentialsBi.reportsInformation">
+            <button (click)="showReport(credentialsBi.embed_token, items)">
+                {{items.name}}
+            </button>
+        </div>
+    </div>
+    <div style=" width: 100%;" [ngStyle]="{ 'height': (screenHeight-150)+ 'px' }" #reportContainer id="reportContainer"></div>  
+</div>
